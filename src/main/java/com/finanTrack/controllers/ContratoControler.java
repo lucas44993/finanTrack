@@ -3,6 +3,7 @@ package com.finanTrack.controllers;
 import com.finanTrack.domain.contratos.Contratos;
 import com.finanTrack.domain.contratos.ContratosRepository;
 import com.finanTrack.domain.contratos.ResquestContratos;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ContratoControler {
         Contratos novoContrato = new Contratos(contrato);
         System.out.println(contrato);
         repository.save(novoContrato);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body("Contrato cadastrado com sucesso");
     }
     @PutMapping
     public ResponseEntity atualizarContrato(@RequestBody @Valid ResquestContratos contrato) {
@@ -52,5 +53,18 @@ public class ContratoControler {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contrato não encontrado");
         }
     }
+
+      @DeleteMapping("/{id}")
+      public ResponseEntity excluirContrato(@PathVariable  Integer id) {
+        Optional<Contratos> contratoExistente = repository.findById(id);
+
+        if (contratoExistente.isPresent() && id == contratoExistente.get().getId())
+        {
+            repository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contrato não encontrado para excluir");
+      }
+
 
 }
