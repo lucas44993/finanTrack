@@ -3,7 +3,6 @@ package com.finanTrack.controllers;
 import com.finanTrack.domain.contratos.Contratos;
 import com.finanTrack.domain.contratos.ContratosRepository;
 import com.finanTrack.domain.contratos.ResquestContratos;
-import jakarta.servlet.ServletOutputStream;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/Contrato")
-public class ContratoControler {
+public class ContratoController {
 
     @Autowired //injetar a dependencia automaticamente
     private ContratosRepository repository;
