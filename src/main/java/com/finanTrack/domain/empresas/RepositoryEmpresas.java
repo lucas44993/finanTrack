@@ -1,4 +1,6 @@
 package com.finanTrack.domain.empresas;
 
-public interface RepositoryEmpresas {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryEmpresas extends JpaRepository<Empresas, Integer> {
 }

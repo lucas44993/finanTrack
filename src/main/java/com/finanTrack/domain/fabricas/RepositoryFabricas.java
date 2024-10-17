@@ -1,4 +1,6 @@
 package com.finanTrack.domain.fabricas;
 
-public interface RepositoryFabricas {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryFabricas extends JpaRepository<Fabricas,Integer> {
 }

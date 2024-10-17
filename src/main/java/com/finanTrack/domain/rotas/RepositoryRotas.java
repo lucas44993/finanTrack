@@ -1,4 +1,6 @@
 package com.finanTrack.domain.rotas;
 
-public interface RepositoryRotas {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryRotas extends JpaRepository<Rotas, Integer> {
 }

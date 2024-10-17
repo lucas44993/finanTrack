@@ -1,4 +1,6 @@
 package com.finanTrack.domain.metas;
 
-public interface RepositoryMetas {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryMetas extends JpaRepository<Metas, Integer> {
 }
