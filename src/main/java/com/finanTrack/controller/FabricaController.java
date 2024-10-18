@@ -17,25 +17,25 @@ import java.util.Optional;
 public class FabricaController {
 
     @Autowired
-    private RepositoryFabricas repositoryFabricas;
+    private RepositoryFabricas repoFabricas;
 
     @GetMapping
     public ResponseEntity listarFabricas(){
-        var todasFabricas = repositoryFabricas.findAll();
+        var todasFabricas = repoFabricas.findAll();
         return ResponseEntity.ok(todasFabricas);
     }
 
     @PostMapping
     public ResponseEntity inserirFabrica(@RequestBody @Valid RequestFabricas RF){
         Fabricas novaFabrica = new Fabricas(RF);
-        repositoryFabricas.save(novaFabrica);
+        repoFabricas.save(novaFabrica);
         return ResponseEntity.ok().body("fabrica criada com sucesso");
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizarFabrica(@RequestBody @Valid RequestFabricas RF){
-        Optional<Fabricas> optionalFabricas = repositoryFabricas.findById(RF.id());
+    public ResponseEntity editarFabrica(@RequestBody @Valid RequestFabricas RF){
+        Optional<Fabricas> optionalFabricas = repoFabricas.findById(RF.id());
 
         if(optionalFabricas.isPresent()){
             Fabricas fabrica = optionalFabricas.get();
@@ -46,7 +46,7 @@ public class FabricaController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity excluirFabrica(@PathVariable Integer id){
-        repositoryFabricas.deleteById(id);
+        repoFabricas.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

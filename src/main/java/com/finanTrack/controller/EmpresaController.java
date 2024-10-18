@@ -16,25 +16,25 @@ import java.util.Optional;
 public class EmpresaController {
 
     @Autowired
-    private RepositoryEmpresas repositoryEmpresas;
+    private RepositoryEmpresas repoEmpresas;
 
     @GetMapping
     public ResponseEntity listarEmpresas() {
-        var todasEmpresas = repositoryEmpresas.findAll();
+        var todasEmpresas = repoEmpresas.findAll();
         return ResponseEntity.ok(todasEmpresas);
     }
 
     @PostMapping
     public ResponseEntity inserirEmpresas(@RequestBody @Valid RequestEmpresas E){
         Empresas novaEmpresa = new Empresas(E);
-        repositoryEmpresas.save(novaEmpresa);
+        repoEmpresas.save(novaEmpresa);
         return ResponseEntity.ok().body("Empresa cadastrado com sucesso");
     }
 
     @PutMapping
     @Transactional
     public ResponseEntity editarEmpresas(@RequestBody @Valid RequestEmpresas E){
-       Optional<Empresas> optionalEmpresas = repositoryEmpresas.findById(E.id());
+       Optional<Empresas> optionalEmpresas = repoEmpresas.findById(E.id());
 
         if (optionalEmpresas.isPresent()) {
             Empresas empresa = optionalEmpresas.get();
@@ -48,7 +48,7 @@ public class EmpresaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity excluirEmpresas(@PathVariable Integer id){
-        repositoryEmpresas.deleteById(id);
+        repoEmpresas.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

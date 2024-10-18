@@ -1,4 +1,6 @@
 package com.finanTrack.domain.contribuicao;
 
-public interface RepositoryContribuicao {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryContribuicao extends JpaRepository<Contribuicao, Integer> {
 }

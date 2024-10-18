@@ -18,25 +18,25 @@ import java.util.Optional;
 public class MetaController {
 
     @Autowired
-    private RepositoryMetas repositoryMetas;
+    private RepositoryMetas repoMetas;
 
     @GetMapping
     public ResponseEntity listarMetas(){
-        var todasMetas = repositoryMetas.findAll();
+        var todasMetas = repoMetas.findAll();
         return ResponseEntity.ok(todasMetas);
     }
 
     @PostMapping
     public ResponseEntity adicionarMetas(@RequestBody RequestMetas M){
         Metas novaMeta = new Metas(M);
-        repositoryMetas.save(novaMeta);
+        repoMetas.save(novaMeta);
         return ResponseEntity.ok().body("meta criada com sucesso");
     }
 
     @PutMapping
     @Transactional
     public ResponseEntity editarMetas(@RequestBody @Valid RequestMetas M){
-        Optional<Metas> optionalMetas = repositoryMetas.findById(M.id());
+        Optional<Metas> optionalMetas = repoMetas.findById(M.id());
 
         if(optionalMetas.isPresent()){
             Metas meta = optionalMetas.get();

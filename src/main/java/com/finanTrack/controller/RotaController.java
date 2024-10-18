@@ -19,24 +19,24 @@ import java.util.Optional;
 public class RotaController {
 
     @Autowired
-    private RepositoryRotas repositoryRotas;
+    private RepositoryRotas repoRotas;
 
     @GetMapping
     public ResponseEntity listarRotas(){
-        var listaRotas = repositoryRotas.findAll();
+        var listaRotas = repoRotas.findAll();
         return ResponseEntity.ok(listaRotas);
     }
 
     @PostMapping
     public ResponseEntity inserirRotas(@RequestBody @Valid RequestRotas R){
         Rotas novaRota = new Rotas(R);
-        repositoryRotas.save(novaRota);
+        repoRotas.save(novaRota);
         return ResponseEntity.ok().body("Rota criada com sucesso");
     }
     @PutMapping
     @Transactional
     public ResponseEntity editarRotas(@RequestBody @Valid RequestRotas R){
-        Optional<Rotas> optionalRotas = repositoryRotas.findById(R.id());
+        Optional<Rotas> optionalRotas = repoRotas.findById(R.id());
 
         if (optionalRotas.isPresent()) {
             Rotas rota = optionalRotas.get();
@@ -49,7 +49,7 @@ public class RotaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity excluirEmpresas(@PathVariable Integer id){
-        repositoryRotas.deleteById(id);
+        repoRotas.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
