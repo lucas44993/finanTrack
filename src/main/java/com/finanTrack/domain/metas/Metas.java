@@ -20,17 +20,17 @@ public class Metas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Double metas;
+    private Double meta;
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime create_at;
 
-    private Double contribuição;
+
+    private Integer fabrica_id;
 
 
     public Metas(RequestMetas requestMetas) {
-        this.metas = requestMetas.metas();
-        this.contribuição = requestMetas.contribuição();
+        this.meta = requestMetas.meta();
+        this.fabrica_id =  requestMetas.fabrica_id();
     }
 }

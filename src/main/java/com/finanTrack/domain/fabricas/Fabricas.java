@@ -21,15 +21,9 @@ public class Fabricas {
 
     private String nome;
 
-    //@Column(name = "created_at", nullable = false, updatable = false) // Não pode me retornar nullo e nem ser atualizado
-    //@Column(nullable = true, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP") //erá preenchido automaticamente pelo banco de dados como a data/hora atual no momento da inserção, devido à definição SQL DEFAULT CURRENT_TIMESTAMP.
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime create_at;
 
-
-    //isso vai ser criado pelo o banco de dados depois buscar a anotação certa
-    private String createAt;
 
 
     public Fabricas(RequestFabricas requestFabricas){

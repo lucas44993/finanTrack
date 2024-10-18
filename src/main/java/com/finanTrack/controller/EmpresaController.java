@@ -5,7 +5,6 @@ import com.finanTrack.domain.empresas.RepositoryEmpresas;
 import com.finanTrack.domain.empresas.RequestEmpresas;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +20,8 @@ public class EmpresaController {
 
     @GetMapping
     public ResponseEntity listarEmpresas() {
-        var AllContratos = repositoryEmpresas.findAll();
-        return ResponseEntity.ok(AllContratos);
+        var todasEmpresas = repositoryEmpresas.findAll();
+        return ResponseEntity.ok(todasEmpresas);
     }
 
     @PostMapping
@@ -48,7 +47,7 @@ public class EmpresaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity excluirEmpresas(@PathVariable int id){
+    public ResponseEntity excluirEmpresas(@PathVariable Integer id){
         repositoryEmpresas.deleteById(id);
         return ResponseEntity.noContent().build();
     }

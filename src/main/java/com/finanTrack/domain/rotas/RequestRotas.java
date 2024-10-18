@@ -1,4 +1,7 @@
 package com.finanTrack.domain.rotas;
 
-public record RequestRotas() {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record RequestRotas(@NotNull @NotBlank String nome, Integer id) {
 }

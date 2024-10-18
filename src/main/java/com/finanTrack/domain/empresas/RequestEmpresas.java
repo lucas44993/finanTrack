@@ -17,9 +17,8 @@ public record RequestEmpresas(
         String nome,
 
         @NotBlank @NotNull
-        String cidade ,
+        String cidade,
 
-        @NotNull
         Integer rota_id
 
 ) {

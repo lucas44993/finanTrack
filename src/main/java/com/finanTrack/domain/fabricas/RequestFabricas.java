@@ -9,12 +9,13 @@ import java.time.LocalDateTime;
 
 public record RequestFabricas(
 
+        Integer id,
+
         @NotBlank @NotNull
         String nome,
 
         @CreationTimestamp
-        @Column(nullable = false, updatable = false)
-        LocalDateTime createdAt
+        LocalDateTime create_at
 
 ) {
 }

@@ -1,15 +1,16 @@
 package com.finanTrack.domain.metas;
 
-import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.NotNull;
 
 public record RequestMetas(
 
-        @NotBlank @NotNull
-        Double metas,
+        Integer id,
 
-        @NotBlank @NotNull
-        Double contribuição
+        @NotNull
+        Double meta,
+        @NotNull
+        Integer fabrica_id
 
 ) {
 }
