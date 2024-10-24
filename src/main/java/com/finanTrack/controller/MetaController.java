@@ -1,12 +1,11 @@
 package com.finanTrack.controller;
 
-import com.finanTrack.domain.fabricas.Fabricas;
 import com.finanTrack.domain.metas.Metas;
 import com.finanTrack.domain.metas.RepositoryMetas;
 import com.finanTrack.domain.metas.RequestMetas;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +43,7 @@ public class MetaController {
             meta.setFabrica_id(M.fabrica_id());
             return ResponseEntity.ok(meta);
         }else{
-            return ResponseEntity.notFound().build();}
+            throw new EntityNotFoundException();
+        }
     }
 }

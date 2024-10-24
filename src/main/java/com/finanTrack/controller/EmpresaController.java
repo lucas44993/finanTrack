@@ -3,6 +3,7 @@ package com.finanTrack.controller;
 import com.finanTrack.domain.empresas.Empresas;
 import com.finanTrack.domain.empresas.RepositoryEmpresas;
 import com.finanTrack.domain.empresas.RequestEmpresas;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class EmpresaController {
             empresa.setCidade(E.cidade());
             return ResponseEntity.ok(empresa);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new EntityNotFoundException();
         }
     }
 

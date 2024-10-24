@@ -1,11 +1,10 @@
 package com.finanTrack.controller;
 
 
-import com.finanTrack.domain.empresas.Empresas;
-import com.finanTrack.domain.empresas.RequestEmpresas;
 import com.finanTrack.domain.rotas.RepositoryRotas;
 import com.finanTrack.domain.rotas.RequestRotas;
 import com.finanTrack.domain.rotas.Rotas;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class RotaController {
             rota.setNome(R.nome());
             return ResponseEntity.ok(rota);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new EntityNotFoundException();
         }
     }
 

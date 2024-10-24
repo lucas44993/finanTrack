@@ -3,8 +3,8 @@ package com.finanTrack.domain.contribuicao;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "contribuicao")
-@Table(name = "contribuicao")
+@Entity(name = "Contribuicao")
+@Table(name = "Contribuicao")
 @Getter
 @Setter
 @AllArgsConstructor

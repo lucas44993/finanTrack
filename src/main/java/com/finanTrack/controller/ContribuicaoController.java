@@ -4,7 +4,7 @@ package com.finanTrack.controller;
 import com.finanTrack.domain.contribuicao.Contribuicao;
 import com.finanTrack.domain.contribuicao.RepositoryContribuicao;
 import com.finanTrack.domain.contribuicao.RequestContribuicao;
-import com.finanTrack.domain.empresas.Empresas;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class ContribuicaoController {
             atuacontribuicao.setContribuicao(c.contribuicao());
             return ResponseEntity.ok(atuacontribuicao);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new EntityNotFoundException();
         }
     }
 

@@ -8,8 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 // Faz com que o spring Identifique que isso é uma entidade e uma tabela.
-@Entity(name = "empresa")
-@Table (name = "empresas")
+@Entity(name = "Empresas")
+@Table (name = "Empresas")
 @Getter
 @Setter
 @AllArgsConstructor

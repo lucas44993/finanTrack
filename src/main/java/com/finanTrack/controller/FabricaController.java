@@ -4,6 +4,7 @@ package com.finanTrack.controller;
 import com.finanTrack.domain.fabricas.Fabricas;
 import com.finanTrack.domain.fabricas.RepositoryFabricas;
 import com.finanTrack.domain.fabricas.RequestFabricas;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,8 @@ public class FabricaController {
             fabrica.setNome(RF.nome());
             return ResponseEntity.ok(fabrica);
         }else{
-        return ResponseEntity.notFound().build();}
+            throw new EntityNotFoundException();
+        }
     }
     @DeleteMapping("/{id}")
     public ResponseEntity excluirFabrica(@PathVariable Integer id){
